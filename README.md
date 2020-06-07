@@ -13,5 +13,5 @@ This project is an ode to our times at university where many games were played t
 Can everyone confirm that you understand the workflow by ticking this box and submitting a Pull Request
 
 	- [x] Chet
-	- [ ] Ollie
+	- [X] Ollie
     - [ ] Harry

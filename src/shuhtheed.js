@@ -28,10 +28,18 @@ class GamePile{
 }
 
 
+function deal(deck, players){
+	for(var i = 0; i < 3;i++){
+	    for (let p in players){
+	    	players[p].pick_up(deck.pop)
+	    }
+	}
+}
 
 function main(){
     var deck = new Deck();
     var game_pile = new GamePile();
+
     game_pile.play(new Card("Diamond","2"))
     game_pile.play(new Card("Diamond","J"))
     game_pile.play(new Card("Diamond","Q"))
@@ -43,9 +51,12 @@ function main(){
     game_pile.play(new Card("Diamond","4"))
     game_pile.play(new Card("Diamond","5"))
 
-    var ellie = new Hand();
-    game_pile.claim(ellie);
-    ellie.sort
+    var ellie = new Hand("Ellie");
+    var harry = new Hand("Harry");
+    deal(deck,[ellie,harry])
+    // console.log(ellie.name)
+    // game_pile.claim(ellie);
+    // ellie.sort
     ellie.print()
 }
 

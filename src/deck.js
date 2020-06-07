@@ -9,8 +9,9 @@ const values = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","Joker"]
 class Card{
 
     constructor(suit,value){
-	this.card_suit=suit;
 	this.card_value=value;
+	this.card_suit=suit;
+
     }
 
     get card(){
@@ -59,6 +60,10 @@ class Deck{
 
     get length(){
 	return this.deck.length
+    }
+
+    get pop(){
+	return this.deck.pop
     }
 
     shuffle_deck(){

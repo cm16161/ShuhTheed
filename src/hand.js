@@ -1,5 +1,5 @@
 class Hand{
-        
+
     sort_hand(){
     	let len = this.hand.length;
     	for (let i = 0; i < len; i++) {
@@ -18,8 +18,13 @@ class Hand{
     }
 
     
-    constructor(){
+    constructor(name){
 	this.hand = []
+	this.player = name
+    }
+
+    get name(){
+	return this.player
     }
 
     get sort(){

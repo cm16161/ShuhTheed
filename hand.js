@@ -1,7 +1,5 @@
 class Hand{
-
-    
-    
+        
     sort_hand(){
     	let len = this.hand.length;
     	for (let i = 0; i < len; i++) {

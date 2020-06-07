@@ -1,47 +1,10 @@
-var Hand = require("./hand.js")
-
+var Stack = require("./stack.js")
+    
 const suits = ["Spades", "Diamonds", "Clubs", "Hearts"]
 const values = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","Joker"]
 
 
-class Stack{
-    constructor(){
-	this.data = [];
-	this.top = 0;
-    }
 
-    get length(){
-	return this.top;
-    }
-
-    get peek(){
-	return this.data[this.top-1];
-    }
-
-    get isEmpty(){
-	return this.top === 0;
-    }
-
-    get pop(){
-	if (this.isEmpty === false){
-	    this.top = this.top -1;
-	    return this.data.pop();	    
-	}
-    }
-
-
-    get print(){
-	for(var i = this.top-1; i >= 0;i--){
-	    console.log(this.data[i]);
-	}
-    }
-
-    push(element){
-	this.data[this.top] = element;
-	this.top = this.top+1;
-    }
-    
-}
 
 class Card{
 
@@ -113,52 +76,5 @@ class Deck{
     }
 }
 
-class GamePile{
-    constructor(){
-	this.pile = new Stack()
-    }
-    get burn(){
-	while ( this.pile.isEmpty === false){
-	    this.pile.pop
-	}
-    }
 
-    play(card){
-	this.pile.push(card);
-    }
-
-    claim(hand){
-	while (this.pile.isEmpty === false){
-	    hand.pick_up(this.pile.pop)
-	}
-    }
-
-    get length(){
-	return this.pile.length;
-    }
-}
-
-
-
-function main(){
-    var deck = new Deck();
-    var game_pile = new GamePile();
-    game_pile.play(new Card("Diamond","2"))
-    game_pile.play(new Card("Diamond","J"))
-    game_pile.play(new Card("Diamond","Q"))
-    game_pile.play(new Card("Diamond","K"))
-    game_pile.play(new Card("Diamond","Joker"))
-    game_pile.play(new Card("Diamond","10"))
-    game_pile.play(new Card("Diamond","3"))
-    game_pile.play(new Card("Diamond","4"))
-    game_pile.play(new Card("Diamond","5"))
-
-    var ellie = new Hand();
-    game_pile.claim(ellie);
-    ellie.sort
-    ellie.print()
-}
-
-////////////////////////////////////////////////////////////
-
-main()
+module.exports = {Card, Deck}

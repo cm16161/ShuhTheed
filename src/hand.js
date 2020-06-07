@@ -1,3 +1,6 @@
+const [{Card},CARD_STATE] = require("./deck.js")
+
+
 class Hand{
 
     sort_hand(){
@@ -38,6 +41,16 @@ class Hand{
 	for (let i in this.hand){
 	    this.hand[i].see = CARD_STATE.PRIVATE
 	}
+    }
+
+    can_play(top){
+	for (var i = 0; i<this.hand.length;i++){
+	    if (this.hand[i].getValue >= top.getValue){
+		return true
+	    }
+	}
+	return false
+	
     }
 }
 

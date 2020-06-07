@@ -18,13 +18,8 @@ class Hand{
     }
 
     
-    constructor(name){
+    constructor(){
 	this.hand = []
-	this.player = name
-    }
-
-    get name(){
-	return this.player
     }
 
     get sort(){
@@ -37,6 +32,12 @@ class Hand{
 
     print(){
 	console.log(this.hand)
+    }
+
+    look(){
+	for (let i in this.hand){
+	    this.hand[i].see = CARD_STATE.PRIVATE
+	}
     }
 }
 

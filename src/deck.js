@@ -2,7 +2,7 @@ var Stack = require("./stack.js")
     
 const suits = ["Spades", "Diamonds", "Clubs", "Hearts"]
 const values = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","Joker"]
-
+const CARD_STATE = Object.freeze({"PUBLIC":0, "PRIVATE":1,"HIDDEN":2})
 
 
 
@@ -11,6 +11,7 @@ class Card{
     constructor(suit,value){
 	this.card_value=value;
 	this.card_suit=suit;
+	this.see = CARD_STATE.HIDDEN;
 
     }
 

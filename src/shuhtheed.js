@@ -1,6 +1,8 @@
 var {Card, Deck} = require("./deck.js")
 var Hand = require("./hand.js")
 var Stack = require("./stack.js")
+var Player = require("./player.js")
+
 
 class GamePile{
     constructor(){
@@ -31,9 +33,12 @@ class GamePile{
 function deal(deck, players){
 	for(var i = 0; i < 3;i++){
 	    for (let p in players){
-	    	players[p].pick_up(deck.pop)
+	    	players[p].hand.pick_up(deck.pop)
 	    }
 	}
+    for (let p in players){
+	players[p].hand.look()
+    }
 }
 
 function main(){
@@ -51,13 +56,10 @@ function main(){
     game_pile.play(new Card("Diamond","4"))
     game_pile.play(new Card("Diamond","5"))
 
-    var ellie = new Hand("Ellie");
-    var harry = new Hand("Harry");
+    var ellie = new Player("Ellie");
+    var harry = new Player("Harry");
     deal(deck,[ellie,harry])
-    // console.log(ellie.name)
-    // game_pile.claim(ellie);
-    // ellie.sort
-    ellie.print()
+    ellie.print_hand();
 }
 
 ////////////////////////////////////////////////////////////

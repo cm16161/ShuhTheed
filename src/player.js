@@ -1,6 +1,8 @@
 var Hand = require("./hand.js")
 var [{},CARD_STATE] = require("./deck.js")
 
+const PLAY_OPTIONS = Object.freeze({"PICKUP":0, "PLAY_CARD":1})
+
 class BottomCards{
     constructor(){
 	this.face_up = []
@@ -66,6 +68,13 @@ class Player{
 	console.log(this.name)
 	console.log(this.hand)
 	console.log(this.bottom_cards)
+    }
+
+    // Allow the user to "make a play"
+    // This can be picking up the game pile (tactical pickup)
+    // Or Placing a card from their hand onto the game pile
+    play(){
+	// TODO
     }
     
 }

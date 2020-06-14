@@ -32,8 +32,17 @@ function create_deck(players){
 
 function play(player, game_pile){
     player.print
-    console.log(player.hand.can_play(game_pile.top_card))
-    console.log(game_pile.top_card)
+    if (player.hand.can_play(game_pile.top_card)){
+	console.log(game_pile.top_card)
+	console.log("Is able to play")
+	player.play()
+    }
+    else{
+	console.log("Picking Up")
+	game_pile.claim(player.hand)
+    }
+
+    
 }
 
 function main(){

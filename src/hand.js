@@ -46,7 +46,6 @@ class Hand{
     can_play(top){
 	for (var i = 0; i<this.hand.length;i++){
 	    if (this.hand[i].getValue >= top.getValue){
-		console.log(this.hand[i])
 		return true
 	    }
 	}

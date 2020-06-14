@@ -2,37 +2,9 @@ var [{Card, Deck},CARD_STATE] = require("./deck.js")
 var Hand = require("./hand.js")
 var Stack = require("./stack.js")
 var {Player, BottomCards} = require("./player.js")
+var GamePile = require("./gamepile.js")
 
-
-class GamePile{
-    constructor(){
-	this.pile = new Stack()
-    }
-    get burn(){
-	while ( this.pile.isEmpty === false){
-	    this.pile.pop
-	}
-    }
-
-    play(card){
-	card.see = CARD_STATE.PUBLIC
-	this.pile.push(card);
-    }
-
-    claim(hand){
-	while (this.pile.isEmpty === false){
-	    hand.pick_up(this.pile.pop)
-	}
-    }
-
-    get length(){
-	return this.pile.length;
-    }
-
-    get top_card(){
-	return this.pile.data[this.pile.top-1]
-    }
-}
+const NERDS = ["Harry", "Ellie", "Karen", "Eilidh", "Niall", "Ollie","Chet"]
 
 
 function deal(deck, players){
@@ -46,9 +18,22 @@ function deal(deck, players){
 	}
 }
 
-function main(){
+function create_players(){
+    ret = [] 
+    for (var i = 0; i < NERDS.length; i++){
+	ret.push(new Player(NERDS[i]));
+    }
+    return ret
+}
 
-    var deck = new Deck();
+function create_deck(players){
+    return new Deck(Math.ceil(players.length*9/54))
+}
+
+function main(){
+    
+    var players = create_players();
+    var deck = create_deck(players)
     var game_pile = new GamePile();
 
     game_pile.play(new Card("Diamond","2"))
@@ -62,38 +47,12 @@ function main(){
     game_pile.play(new Card("Diamond","4"))
     game_pile.play(new Card("Diamond","5"))
 
-
-
-    var ellie = new Player("Ellie");
-    var harry = new Player("Harry");
-    var players = [ellie, harry]
     deal(deck,players)
-    game_pile.pile.print
 
-    players[0].print
-    console.log(players[0].hand.can_play(game_pile.top_card))
+    console.log(game_pile.top_card)
 
-    players[0].hand.hand[2] = players[0].bottom_cards.swap(0,players[0].hand.hand[2])
-
-    players[0].print
     
-    // for(var player in players){
-    // 	// console.log(players[player].name)
-    // 	// players[player].print_hand();
-    // 	players[player].print
-    // 	console.log(players[player].hand.can_play(game_pile.top_card))
-    // }
-    
-    if(ellie.hand.can_play(game_pile.top_card) === false){
-	game_pile.claim(ellie.hand)
-    }
 
-
-
-//     console.log("ELLIE:")
-//     ellie.print_hand();
-//     console.log("HARRY:")
-//     harry.print_hand();
 }
 
 ////////////////////////////////////////////////////////////

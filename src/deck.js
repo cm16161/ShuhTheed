@@ -37,15 +37,18 @@ class Card{
 
 
 class Deck{
-    constructor(){
+
+    constructor(n_decks = 1){
 	this.deck = new Stack()
-	for (var i = 0; i < suits.length;i++){
-	    for (var j = 0 ; j<values.length-1;j++){
-		this.deck.push((new Card(suits[i],values[j])));
+	for (var d = 0; d < n_decks; d++){
+	    for (var i = 0; i < suits.length; i++){
+		for (var j = 0; j< values.length-1; j++){
+		    this.deck.push((new Card(suits[i],values[j])));
+		}
 	    }
+	    this.deck.push((new Card("Red","Joker")));
+	    this.deck.push((new Card("Black","Joker")));
 	}
-	this.deck.push((new Card("Red","Joker")));
-	this.deck.push((new Card("Black","Joker")));
 	this.shuffle;
     }
 

@@ -28,6 +28,10 @@ class GamePile{
     get top_card(){
 	return this.pile.data[this.pile.top-1]
     }
+
+    get isEmpty(){
+	return this.pile.isEmpty
+    }
 }
 
 

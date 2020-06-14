@@ -4,7 +4,7 @@ var Stack = require("./stack.js")
 var {Player, BottomCards} = require("./player.js")
 var GamePile = require("./gamepile.js")
 
-const NERDS = ["Harry", "Ellie", "Karen", "Eilidh", "Niall", "Ollie","Chet"]
+const NERDS = ["Nah Staying In Tonight", "Home-Invasion", "Manager", "AYYYYLEEEEEEEEE", "IRA", "White-Power","Chet - Creator of Code, Master of the Game. King amongst Peasants, God amongst Kings"]
 
 
 function deal(deck, players){
@@ -30,16 +30,25 @@ function create_deck(players){
     return new Deck(Math.ceil(players.length*9/54))
 }
 
+
+// TODO - Implement Functionality to determine whether or not player has either played a card
+//        or picked up
+//        This allows us to determine whether or not to "Draw" a card from Deck/Top Cards
+function player_option(player){
+    return true
+}
+
 function play(player, game_pile){
-    player.print
-    if (player.hand.can_play(game_pile.top_card)){
-	console.log(game_pile.top_card)
-	console.log("Is able to play")
-	player.play()
+    if(game_pile.isEmpty){
+	return player_option(player)
+    }
+    else if (player.hand.can_play(game_pile.top_card)){
+	return player_option(player)
     }
     else{
 	console.log("Picking Up")
 	game_pile.claim(player.hand)
+	return false
     }
 
     
@@ -64,7 +73,21 @@ function main(){
 
     deal(deck,players)
 
-    play(players[0],game_pile)
+    for(let player in players){
+	var p = players[player]
+	var draw = play(p, game_pile)
+	if (draw){
+	    if (deck.length){
+		console.log("Draw from Deck")
+		p.hand.pick_up(deck.pop)
+	    }
+	    else{
+		console.log("Draw from Top 3")
+	    }
+	}
+    }
+
+
 
     
 

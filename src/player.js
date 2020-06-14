@@ -75,6 +75,8 @@ class Player{
     // Or Placing a card from their hand onto the game pile
     play(){
 	// TODO
+	console.log("//TODO - Play Card Function")
+	
     }
     
 }

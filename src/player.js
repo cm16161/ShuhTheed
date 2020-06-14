@@ -3,8 +3,8 @@ var [{},CARD_STATE] = require("./deck.js")
 
 class BottomCards{
     constructor(){
-	this.face_down = []
 	this.face_up = []
+	this.face_down = []
     }
 
     flip_bottom(index){
@@ -33,11 +33,11 @@ class BottomCards{
     }
 
     print(){
-	console.log("FACE_DOWN")
-	console.log(this.face_down)
-
 	console.log("FACE_UP")
 	console.log(this.face_up)
+
+	console.log("FACE_DOWN")
+	console.log(this.face_down)
     }
   
     
@@ -65,7 +65,7 @@ class Player{
     get print(){
 	console.log(this.name)
 	console.log(this.hand)
-	this.bottom_cards.print()
+	console.log(this.bottom_cards)
     }
     
 }

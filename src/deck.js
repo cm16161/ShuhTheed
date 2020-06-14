@@ -38,6 +38,20 @@ class Card{
 
 class Deck{
 
+    shuffle_deck(){
+	for (var i = 0; i < 10000; i++){
+	    var fst = Math.floor((Math.random() * this.deck.length));
+	    var scd = Math.floor((Math.random() * this.deck.length));
+	    while (scd == fst){
+		scd = Math.floor((Math.random() * this.deck.length));
+	    }
+	    var tmp = this.deck.data[fst];
+	    this.deck.data[fst] = this.deck.data[scd];
+	    this.deck.data[scd] = tmp;
+	}
+	
+    }
+    
     constructor(n_decks = 1){
 	this.deck = new Stack()
 	for (var d = 0; d < n_decks; d++){
@@ -49,7 +63,7 @@ class Deck{
 	    this.deck.push((new Card("Red","Joker")));
 	    this.deck.push((new Card("Black","Joker")));
 	}
-	this.shuffle;
+	this.shuffle_deck();
     }
 
     get print(){
@@ -70,19 +84,6 @@ class Deck{
 	return this.deck.pop
     }
 
-    shuffle_deck(){
-	for (var i = 0; i < 10000; i++){
-	    var fst = Math.floor((Math.random() * 54));
-	    var scd = Math.floor((Math.random() * 54));
-	    while (scd == fst){
-		scd = Math.floor((Math.random() * 54));
-	    }
-	    var tmp = this.deck.data[fst];
-	    this.deck.data[fst] = this.deck.data[scd];
-	    this.deck.data[scd] = tmp;
-	}
-	
-    }
 }
 
 

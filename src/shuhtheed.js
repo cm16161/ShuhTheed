@@ -30,6 +30,12 @@ function create_deck(players){
     return new Deck(Math.ceil(players.length*9/54))
 }
 
+function play(player, game_pile){
+    player.print
+    console.log(player.hand.can_play(game_pile.top_card))
+    console.log(game_pile.top_card)
+}
+
 function main(){
     
     var players = create_players();
@@ -49,7 +55,7 @@ function main(){
 
     deal(deck,players)
 
-    console.log(game_pile.top_card)
+    play(players[0],game_pile)
 
     
 

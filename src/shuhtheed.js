@@ -4,18 +4,18 @@ var Stack = require("./stack.js")
 var {Player, BottomCards} = require("./player.js")
 var GamePile = require("./gamepile.js")
 
-const NERDS = ["Nah Staying In Tonight", "Home-Invasion", "Manager", "AYYYYLEEEEEEEEE", "IRA", "White-Power","Chet - Creator of Code, Master of the Game. King amongst Peasants, God amongst Kings"]
+const NERDS = ["Nah Staying In Tonight", "Home-Invasion", "Manager", "AYYYYLEEEEEEEEE", "IRA", "Don't Look at my Back!!!","Chet - Creator of Code, Master of the Game. King amongst Peasants, God amongst Kings"]
 
 
 function deal(deck, players){
-	for(var i = 0; i < 3;i++){
-	    for (let p in players){
-		players[p].bottom_cards.give(deck.pop,true)
-		players[p].bottom_cards.give(deck.pop,false)
-	    	players[p].hand.pick_up(deck.pop)
-		players[p].hand.look()
-	    }
+    for(var i = 0; i < 3;i++){
+	for (let p in players){
+	    players[p].bottom_cards.give(deck.pop,true)
+	    players[p].bottom_cards.give(deck.pop,false)
+	    players[p].hand.pick_up(deck.pop)
+	    players[p].hand.look()
 	}
+    }
 }
 
 function create_players(){
@@ -35,6 +35,12 @@ function create_deck(players){
 //        or picked up
 //        This allows us to determine whether or not to "Draw" a card from Deck/Top Cards
 function player_option(player){
+    /* 
+       function: player_option
+       input   : player to make a move
+       output  : boolean variable - true when a card is played
+       - false when the pile is picked up
+    */
     return true
 }
 
@@ -50,9 +56,11 @@ function play(player, game_pile){
 	game_pile.claim(player.hand)
 	return false
     }
-
     
 }
+
+
+////////////////////////////////////////////////////////////
 
 function main(){
     
@@ -73,23 +81,32 @@ function main(){
 
     deal(deck,players)
 
+    var p = players[0]
+
     for(let player in players){
 	var p = players[player]
 	var draw = play(p, game_pile)
 	if (draw){
-	    if (deck.length){
-		console.log("Draw from Deck")
-		p.hand.pick_up(deck.pop)
+	    while(p.hand.length < 3){
+		if (deck.length > 0){
+		    console.log("Draw from Deck")
+		    p.hand.pick_up(deck.pop)
+		}		
 	    }
-	    else{
-		console.log("Draw from Top 3")
+	    if (p.hand.length == 0 && deck.length == 0){
+		console.log("Pickup Top 3")
+		p.hand.hand = p.bottom_cards.get_face_up()
 	    }
+
 	}
     }
 
+}
+}
 
 
-    
+
+
 
 }
 

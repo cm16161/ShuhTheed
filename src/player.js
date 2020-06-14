@@ -41,7 +41,16 @@ class BottomCards{
 	console.log("FACE_DOWN")
 	console.log(this.face_down)
     }
-  
+
+    get_face_up(){
+	for (let i in this.face_up){
+	    this.face_up[i].see = CARD_STATE.PRIVATE
+	}
+	var ret = this.face_up
+
+	this.face_up = []
+	return ret
+    }
     
 }
 

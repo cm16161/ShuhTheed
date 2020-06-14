@@ -50,7 +50,10 @@ class Hand{
 	    }
 	}
 	return false
-	
+    }
+
+    get length(){
+	return this.hand.length
     }
 }
 

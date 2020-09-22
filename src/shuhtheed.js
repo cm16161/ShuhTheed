@@ -8,20 +8,20 @@ const NERDS = ["Nah Staying In Tonight", "Home-Invasion", "Manager", "AYYYYLEEEE
 
 
 function deal(deck, players){
-    for(var i = 0; i < 3;i++){
-	for (let p in players){
-	    players[p].bottom_cards.give(deck.pop,true)
-	    players[p].bottom_cards.give(deck.pop,false)
-	    players[p].hand.pick_up(deck.pop)
-	    players[p].hand.look()
-	}
+    for(var i = 0; i < 3; i++){
+	    for (let p in players){
+	        players[p].bottom_cards.give(deck.pop,true)
+	        players[p].bottom_cards.give(deck.pop,false)
+	        players[p].hand.pick_up(deck.pop)
+	        players[p].hand.look()
+	    }
     }
 }
 
 function create_players(){
     ret = [] 
     for (var i = 0; i < NERDS.length; i++){
-	ret.push(new Player(NERDS[i]));
+	    ret.push(new Player(NERDS[i]));
     }
     return ret
 }
@@ -46,15 +46,15 @@ function player_option(player){
 
 function play(player, game_pile){
     if(game_pile.isEmpty){
-	return player_option(player)
+	    return player_option(player)
     }
     else if (player.hand.can_play(game_pile.top_card)){
-	return player_option(player)
+	    return player_option(player)
     }
     else{
-	console.log("Picking Up")
-	game_pile.claim(player.hand)
-	return false
+	    console.log("Picking Up")
+	    game_pile.claim(player.hand)
+	    return false
     }
     
 }
@@ -67,7 +67,7 @@ function main(){
     var players = create_players();
     var deck = create_deck(players)
     var game_pile = new GamePile();
-    
+        
     game_pile.play(new Card("Diamond","2"))
     game_pile.play(new Card("Diamond","J"))
     game_pile.play(new Card("Diamond","Q"))
@@ -84,21 +84,21 @@ function main(){
     var p = players[0]
 
     for(let player in players){
-	var p = players[player]
-	var draw = play(p, game_pile)
-	if (draw){
-	    while(p.hand.length < 3){
-		if (deck.length > 0){
-		    console.log("Draw from Deck")
-		    p.hand.pick_up(deck.pop)
-		}		
-	    }
-	    if (p.hand.length == 0 && deck.length == 0){
-		console.log("Pickup Top 3")
-		p.hand.hand = p.bottom_cards.get_face_up()
-	    }
+        var p = players[player]
+        var draw = play(p, game_pile)
+        if (draw){
+            while(p.hand.length < 3){
+                if (deck.length > 0){
+                    console.log("Draw from Deck")
+                    p.hand.pick_up(deck.pop)
+                }		
+            }
+            if (p.hand.length == 0 && deck.length == 0){
+                console.log("Pickup Top 3")
+                p.hand.hand = p.bottom_cards.get_face_up()
+            }
 
-	}
+        }
     }
 
 }
@@ -111,5 +111,5 @@ function main(){
 
 
 ////////////////////////////////////////////////////////////
-console.log("some stuff ")
+
 main()

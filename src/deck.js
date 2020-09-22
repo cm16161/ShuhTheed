@@ -16,7 +16,7 @@ class Card{
     }
 
     get card(){
-	return this.whoami()
+		return this.whoami()
     }
 
     get getValue(){
@@ -24,12 +24,12 @@ class Card{
     }
 
     get getSuit(){
-	return this.suit;
+		return this.suit;
     }
 
     
     whoami(){
-	console.log(this.card_value+" of " + this.card_suit) 
+		console.log(this.card_value+" of " + this.card_suit) 
     }
 
 
@@ -43,7 +43,7 @@ class Deck{
 	    var fst = Math.floor((Math.random() * this.deck.length));
 	    var scd = Math.floor((Math.random() * this.deck.length));
 	    while (scd == fst){
-		scd = Math.floor((Math.random() * this.deck.length));
+			scd = Math.floor((Math.random() * this.deck.length));
 	    }
 	    var tmp = this.deck.data[fst];
 	    this.deck.data[fst] = this.deck.data[scd];
@@ -56,9 +56,9 @@ class Deck{
 	this.deck = new Stack()
 	for (var d = 0; d < n_decks; d++){
 	    for (var i = 0; i < suits.length; i++){
-		for (var j = 0; j< values.length-1; j++){
-		    this.deck.push((new Card(suits[i],values[j])));
-		}
+			for (var j = 0; j< values.length-1; j++){
+		    	this.deck.push((new Card(suits[i],values[j])));
+			}
 	    }
 	    this.deck.push((new Card("Red","Joker")));
 	    this.deck.push((new Card("Black","Joker")));
@@ -67,21 +67,21 @@ class Deck{
     }
 
     get print(){
-	for(var i in this.deck.data){
-	    this.deck.data[i].card;
-	}
+		for(var i in this.deck.data){
+			this.deck.data[i].card;
+		}
     }
 
     get shuffle(){
-	this.shuffle_deck();
+		this.shuffle_deck();
     }
 
     get length(){
-	return this.deck.length
+		return this.deck.length
     }
 
     get pop(){
-	return this.deck.pop
+		return this.deck.pop
     }
 
 }

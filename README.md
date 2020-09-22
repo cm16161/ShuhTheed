@@ -14,4 +14,4 @@ Can everyone confirm that you understand the workflow by ticking this box and su
 
 	- [x] Chet
 	- [X] Ollie
-    - [ ] Harry
+    - [X] Harry

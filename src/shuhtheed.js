@@ -67,7 +67,7 @@ function main(){
     var players = create_players();
     var deck = create_deck(players)
     var game_pile = new GamePile();
-
+    
     game_pile.play(new Card("Diamond","2"))
     game_pile.play(new Card("Diamond","J"))
     game_pile.play(new Card("Diamond","Q"))
@@ -111,5 +111,5 @@ function main(){
 
 
 ////////////////////////////////////////////////////////////
-
+console.log("some stuff ")
 main()
